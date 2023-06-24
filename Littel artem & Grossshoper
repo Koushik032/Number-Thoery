@@ -1,0 +1,89 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int mx =1e5+123;
+//bitset <mx> vis;
+//vector <int> primes;
+
+
+int main()
+{
+    optimize();
+
+        int n;
+        ll sum = 0;
+        cin >> n;
+        
+        string s;
+        cin >> s;
+
+        vl v;
+
+        for ( int i = 0; i < n; i++ )
+        {
+            ll a;
+            cin >> a;
+            v.PB(a);
+        }
+        bool flag = false;
+
+            for ( int i = 0; i < n; i++ )
+            {
+                if ( sum >= 0 && sum < n )
+                {
+                    if ( s[sum] == '<' )
+                    {
+                        sum -= v[sum];
+                    }
+                    else
+                    {
+                        sum += v[sum];
+                    }
+                    
+                }
+                else
+                {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if ( sum < 0 || sum >= n )flag = true;
+            
+            if ( flag )cout << "FINITE" << endl;
+            else cout << "INFINITE" << endl;
+        
+
+    return 0;
+}
