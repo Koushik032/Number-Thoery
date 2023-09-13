@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 10000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+///Recursive Binary Exponantial
+ll BinaryExponantial( ll a, ll b )
+{
+    if ( b == 0 )return 1;
+    ll res = BinaryExponantial(a, b/2);
+    if ( b&1 )
+    {
+        return (a * (res * res) % MOD)% MOD;
+    }
+    else
+    {
+        return (res * res) % MOD;
+    }
+}
+
+///Iterative Binary Exponantial
+ll BinaryExponantial( ll a, ll b)
+{
+    ll ans = 1;
+    while ( b )
+    {
+        if ( b&1 )
+        {
+            ans = (ans * a)%MOD;
+        }
+        a = (a * a) % MOD;
+        b >>= 1;
+    }
+    return ans;
+}
+
+int main() {
+
+    optimize();
+
+        ll a, b;
+        while ( cin >> a >> b)
+        {
+            if ( a == 0 && b == 0)break;
+            cout << (((BinaryExponantial(a, b)+ BinaryExponantial(a, a)) + (2*BinaryExponantial(a-1,b) + 2*BinaryExponantial(a-1,a-1))))%MOD << endl;
+        }
+    return 0;
+}
