@@ -52,5 +52,21 @@ int main() {
         ///Convert Unset Bit
         PrintBinary( a & (~(1<<x)));
 
+        ///Toggle Bit
+
+        PrintBinary(a ^ (1 << x) );
+
+        ///Set Bit Count Without Function
+        int cnt = 0;
+        for ( int i = 31; i >= 0; i-- )
+        {
+            if ( (a & (1 << i)) != 0 )cnt++;
+        }
+        cout << cnt << endl;
+
+        ///Set Bit Count With Function
+
+        cout << __builtin_popcount(a) << endl;
+
     return 0;
 }
