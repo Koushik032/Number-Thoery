@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+void PrintBinary( int n )
+{
+        ///Number convert to Binary Number
+        for ( int i = 10; i >= 0; i-- )
+        {
+            cout << ((n >> i) & 1);
+        }
+        cout << endl;
+}
+
+int main() {
+
+    optimize();
+
+        int a;
+        cin >> a;
+
+        PrintBinary(a);
+
+        int x;
+        cin >> x;
+
+        ///Bit set & Unset Bit Cheack
+        if ( (a & (1 << x)) != 0 )cout << "Bit Set" << endl;
+        else cout << "Not Set" << endl;
+
+        ///Convert Bit Set
+        PrintBinary(a | (1<<x) );
+
+        ///Convert Unset Bit
+        PrintBinary( a & (~(1<<x)));
+
+    return 0;
+}
