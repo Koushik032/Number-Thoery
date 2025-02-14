@@ -30,6 +30,14 @@ void PrintBinary( int n )
         cout << endl;
 }
 
+void print_decimal( string s ){
+    for( int i = 31; i >= 0; i-- ){
+        if( s[i] != '0' ){
+            cout << ( 1 << (31 - i) );
+        }
+    }
+}
+
 int main() {
 
     optimize();
@@ -38,6 +46,8 @@ int main() {
         cin >> a;
 
         PrintBinary(a);
+
+        print_decimal("10001");
 
         int x;
         cin >> x;
