@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int eulerTotient(int n) {
+    int result = n; // Initialize result as n
+    
+    // Consider all prime factors of n and subtract their multiples
+    for (int p = 2; p * p <= n; ++p) {
+        // Check if p is a prime factor of n
+        if (n % p == 0) {
+            // If yes, update n and result
+            while (n % p == 0)
+                n /= p;
+            result -= result / p;
+        }
+    }
+    
+    // If n has a prime factor greater than sqrt(n) (there can be at most one)
+    if (n > 1)
+        result -= result / n;
+    
+    return result;
+}
+
+int main() {
+    int n;
+    cout << "Enter a positive integer: ";
+    cin >> n;
+
+    for( int i = 1; i <= n; i++ ){
+        cout << eulerTotient(i) << endl;
+    }
+    //cout << "Number of coprime numbers from 1 to " << n << " is: " << eulerTotient(n) << endl;
+    return 0;
+}
